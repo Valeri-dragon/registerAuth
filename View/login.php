@@ -1,0 +1,31 @@
+<?php require("../Model/Login.php") ?>
+<?php
+   if(isset($_POST['submit'])){
+      $user = new LoginUser($_POST['login'], $_POST['password']);
+   }
+?>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/style.css">
+   <title>Страница входа в приложение</title>
+</head>
+<body>
+   <form action="" method="post" enctype="multipart/form-data" autocomplete="off">
+      <h2>Войти в приложение</h2>
+       <h4>Все поля обязательны для <span>заполнения</span></h4>
+      <label>Логин</label>
+      <input type="text" name="login">
+ 
+      <label>Пароль</label>
+      <input type="text" name="password">
+ 
+      <button type="submit" name="submit">Войти</button>
+ 
+      <p class="error" id="registerError"><?php echo @$user->error ?></p>
+      <p class="success" id="registerSucces"><?php echo @$user->success ?></p>
+   </form>
+</body>
+</html>
